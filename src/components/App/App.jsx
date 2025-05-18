@@ -8,6 +8,7 @@ import FlightList from '../FlightList/FlightList.jsx';
 import { toggleStopsFilters } from '../../store/stopsFilterSlice.jsx';
 import { toggleSortFilter } from '../../store/sortFilterSlice.jsx';
 import { fetchTicketsInBatches, showMoreTickets } from '../../store/flightListSlice.jsx';
+import Logo from '../../assets/Logo.svg';
 
 import AppStyles from './App.module.css';
 
@@ -101,7 +102,7 @@ const App = () => {
 
   return (
     <main className={AppStyles.main}>
-      <img src="assets/Logo.svg" alt="aviasales" className={AppStyles['avia-logo']} />
+      <img src={Logo} alt="aviasales" className={AppStyles['avia-logo']} />
       <div className={AppStyles['app-container']}>
         <StopsFilter selected={filtersEnabled} onChange={handleStopsChange} />
         <div className={AppStyles.container}>
