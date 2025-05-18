@@ -1,0 +1,26 @@
+/* Sort Filter */
+.sort-filter {
+  display: flex;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.sort-filter > :first-child {
+  border-radius: 5px 0 0 5px !important;
+}
+
+.sort-filter > :last-child {
+  border-radius: 0 5px 5px 0 !important;
+}
+
+.sort-filter :global(.ant-btn) {
+  flex: 1;
+  border: none;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+}
+.sort-filter :global(.ant-btn-primary) {
+  border-bottom-color: #1890ff;
+}
