@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Button, Spin } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -12,7 +12,7 @@ import Logo from '../../assets/Logo.svg';
 
 import AppStyles from './App.module.css';
 
-const LoadMoreButton = ({ onClick }) => {
+const LoadMoreButton = () => {
   const dispatch = useDispatch();
 
   return (
@@ -70,8 +70,6 @@ function getFilteredAndSortedTickets(tickets, checkedStops, sortPattern) {
 }
 
 const App = () => {
-  const [cards, setCards] = useState(Array(5).fill({ price: '13 400', segments: ['HKG', 'JNB', 'HKG'] }));
-
   const dispatch = useDispatch();
   const filtersEnabled = useSelector((state) => state.stopsFilters);
   const sortKey = useSelector((state) => {
@@ -96,10 +94,6 @@ const App = () => {
     dispatch(toggleSortFilter(key));
   };
 
-  const handleLoadMore = () => {
-    setCards((prev) => [...prev, ...Array(5).fill({ price: '13 400', segments: ['HKG', 'JNB', 'HKG'] })]);
-  };
-
   return (
     <main className={AppStyles.main}>
       <img src={Logo} alt="aviasales" className={AppStyles['avia-logo']} />
@@ -108,7 +102,7 @@ const App = () => {
         <div className={AppStyles.container}>
           <SortFilter style={{ height: '70px' }} active={sortKey} onChange={handleSortChange} />
           {loading ? <Spin /> : <FlightList tickets={filteredTickets} gettingTickets={gettingTickets} />}
-          {loading || filteredTickets.length === 0 ? null : <LoadMoreButton onClick={handleLoadMore} />}
+          {loading || filteredTickets.length === 0 ? null : <LoadMoreButton />}
         </div>
       </div>
     </main>
