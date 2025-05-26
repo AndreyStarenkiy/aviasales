@@ -6,6 +6,7 @@
 .avia-logo {
   height: 60px;
   margin: 50px;
+  margin-right: 16px;
 }
 
 .app-container {
@@ -13,7 +14,6 @@
   width: 960px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
-  display: flex;
   gap: 20px;
 }
 

@@ -6,7 +6,7 @@ import FlightCard from '../FlightCard/FlightCard.jsx';
 import FlightListStyles from './FlightList.module.css';
 
 const FlightList = ({ tickets, gettingTickets }) => {
-  const n = useSelector((state) => state.tickets.multiplier);
+  const multiplier = useSelector((state) => state.tickets.multiplier);
   const spin = (
     <div
       style={{
@@ -18,7 +18,11 @@ const FlightList = ({ tickets, gettingTickets }) => {
     >
       <Spin
         className={FlightListStyles['ant-spin']}
-        style={{ position: 'absolute', right: '0px' }}
+        style={{
+          position: 'absolute',
+          right: 0,
+          top: '-74px'
+        }}
         spinning={true}
         tip="Ищем лучшие билеты"
       >
@@ -30,7 +34,7 @@ const FlightList = ({ tickets, gettingTickets }) => {
   return (
     <div className={FlightListStyles['flight-list']}>
       {tickets.length === 0 ? 'Рейсов, подходящих под заданные фильтры, не найдено' : null}
-      {tickets.slice(0, 5 * n).map((ticket, i) => (
+      {tickets.slice(0, 5 * multiplier).map((ticket, i) => (
         <FlightCard key={i} price={ticket.price} carrier={ticket.carrier} segments={ticket.segments} />
       ))}
       {gettingTickets ? spin : null}
